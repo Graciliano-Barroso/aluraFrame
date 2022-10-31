@@ -3,6 +3,7 @@ let campos = [
     document.querySelector('#quantidade'),
     document.querySelector('#valor')
 ];
+
 let tbody = document.querySelector('table tbody');
 
 document.querySelector('form').addEventListener('submit', (event)=> {
@@ -27,5 +28,7 @@ document.querySelector('form').addEventListener('submit', (event)=> {
     campos[0].value = '';
     campos[1].value = 1;
     campos[2].value = 0;
+
+    campos[0].focus();
 
 });
