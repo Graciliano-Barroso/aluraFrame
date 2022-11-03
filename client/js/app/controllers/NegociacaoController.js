@@ -15,6 +15,11 @@ class NegociacaoController {
             this._inputData.value
                 .split('-')
         );
-            console.log(data);
+        let negociacao = new Negociacao(
+            data,
+            this._inputQuantidade.value,
+            this._inputValor.value
+        );
+        console.log(negociacao);
     }
 }
