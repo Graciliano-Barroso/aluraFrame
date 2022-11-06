@@ -9,7 +9,7 @@ class Negociacao {
     }
 
     get volume() {  // Função criada dentro de uma classe é chamada de metodo
-        return this._quantidade * this._valor;
+        return (this._quantidade * this._valor).toFixed(2);
     }
 
     get data() {
