@@ -59,17 +59,25 @@
     </script>
 
     <script>
-        let negociacao = new Proxy(new Negociacao(new Date(), 1, 100), {
+        let lista = new Proxy(new ListaNegociacoes(), {
 
-            get: function(terget, prop, value, receiver) {
+            get(target, prop, receiver) {
 
-                console.log(`valor anterior: ${target[prop]} novo valor: ${value}`);
-                return Reflect.set(terget, prop, value, receiver);
+                if(['adiciona', 'esvazia'].includes(prop) && typeof(target[prop]) == typeof(Function)) {
+
+                    return function() {
+
+                        console.log(`interceptado ${prop}`);
+                        Reflect.apply(target[prop], target, arguments);
+                    }
+                }
+
+                return Reflect.get(target, prop, receiver);
             }
         });
 
-        negociacao._quantidade = 10;
-        negociacao._valor = 10;
+        lista.adiciona(new Negociacao(new Date(), 1, 100));
+        lista.esvazia();
     </script>
 </body>
 </html>
