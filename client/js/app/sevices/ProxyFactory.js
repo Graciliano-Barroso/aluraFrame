@@ -23,6 +23,7 @@ class ProxyFactory {
             set(target, prop, value, receiver) {
 
                 if(props.includes(prop)) {
+                    target[prop] = value;
                     acao(target);
                 }
 
@@ -33,6 +34,6 @@ class ProxyFactory {
     }
 
     static _ehFuncao(func) {
-        return typeof(func) == typeof(Function);
+    return typeof(func) == typeof(Function);
     }
 }
